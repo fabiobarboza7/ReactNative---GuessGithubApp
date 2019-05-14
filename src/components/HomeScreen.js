@@ -32,26 +32,10 @@ export default class HomeScreen extends React.Component{
 	loadUsers = async () => {
 		const response = await api.get(this.state.username);
 		const data = response.data;
-		if(this.state.name == undefined){
-			this.setState({name: "Empty"})
-		} else {
-			this.setState({name: data.name})
-		}
-		if(this.state.location == undefined){
-			this.setState({location: "Empty"})
-		} else {
-			this.setState({location: data.location})
-		}
-		if(this.state.bio == undefined){
-			this.setState({bio: "Empty"})
-		} else {
-			this.setState({bio: data.bio})
-		}
-		if(this.state.avatar_url == undefined){
-			this.setState({photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'})
-		} else {
-			this.setState({photo: data.avatar_url})
-		}
+		this.state.name == 0 ? this.setState({name: "Empty"}) : this.setState({name: data.name})
+		this.state.location == 0 ? this.setState({location: "Empty"}) : this.setState({location: data.location});
+		this.state.bio == 0 ? this.setState({bio: "Empty"}) : this.setState({bio: data.bio});
+		this.setState({photo: data.avatar_url})
 
 	};
 
